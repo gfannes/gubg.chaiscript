@@ -18,6 +18,13 @@ task :declare do
 end
 
 task :define => :declare do
+    chai = Build::Executable.new('chai')
+    chai.add_include_path(shared_dir('include'))
+    chai.add_sources(FileList.new('src/chai/**/*.cpp'))
+    chai.add_library_path(shared_dir('lib'))
+    chai.add_library('dl', 'pthread')
+    chai.build
+    publish(chai.name, dst: 'bin')
 end
 
 task :test => :define do
