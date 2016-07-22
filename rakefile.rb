@@ -9,6 +9,10 @@ task :help do
     puts('define: build and copy libraries and executables to GUBG::shared')
 end
 
+task :clean do
+    rm_rf '.cache'
+end
+
 task :declare do
     Dir.chdir(shared_dir('extern')) do
         git_clone('https://github.com/ChaiScript', 'ChaiScript') do
