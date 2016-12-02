@@ -11,7 +11,10 @@ int main(int argc, const char **argv)
         cout << "You have to pass a chaiscript" << endl;
         return -1;
     }
-    ChaiScript chai(Std_Lib::library());
+
+    using Parser = parser::ChaiScript_Parser<eval::Noop_Tracer, optimizer::Optimizer_Default>;
+    chaiscript::ChaiScript_Basic chai(Std_Lib::library(), std::make_unique<Parser>());
+
     const auto &filename = argv[1];
     chai.eval_file(filename);
     return 0;
