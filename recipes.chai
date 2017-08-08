@@ -1,0 +1,9 @@
+recipe("gubg.chaiscript", "func", fun(r){
+})
+
+recipe("chai", "func", fun(r){
+    r.add_header("extern/ChaiScript/include", "chaiscript/*.hpp")
+})
+
+recipe("gubg.chaiscript", "ut", fun(r){
+})

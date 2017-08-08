@@ -1,0 +1,4 @@
+[submodule "extern/ChaiScript"]
+	path = extern/ChaiScript
+	url = https://github.com/ChaiScript/ChaiScript
+	branch = develop
