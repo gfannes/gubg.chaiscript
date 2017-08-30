@@ -6,5 +6,4 @@ task :prepare do
     end
 end
 
-task :update do
-end
+task :run
