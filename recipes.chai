@@ -1,9 +1,12 @@
-recipe("gubg.chaiscript", "func", fun(r){
-})
+add_book("gubg.chaiscript", fun(b){
+    b.add_recipe("func", fun(r){
+    })
 
-recipe("chai", "func", fun(r){
-    r.add_header("extern/ChaiScript/include", "chaiscript/*.hpp")
+    b.add_recipe("ut", fun(r){
+    })
 })
-
-recipe("gubg.chaiscript", "ut", fun(r){
+add_book("chai", fun(b){
+    b.add_recipe("func", fun(r){
+        r.add_header("extern/ChaiScript/include", "chaiscript/*.hpp")
+    })
 })
