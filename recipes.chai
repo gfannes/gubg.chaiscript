@@ -1,11 +1,11 @@
-add_book("gubg.chaiscript", fun(b){
+open_book("gubg.chaiscript", fun(b){
     b.add_recipe("func", fun(r){
     })
 
     b.add_recipe("ut", fun(r){
     })
 })
-add_book("chai", fun(b){
+open_book("chai", fun(b){
     b.add_recipe("func", fun(r){
         r.add_header("extern/ChaiScript/include", "chaiscript/*.hpp")
     })
