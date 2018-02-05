@@ -1,5 +1,6 @@
 root.book("gubg/chaiscript", fun(b){
     b.recipe("func", fun(r){
+	r.add("src", "gubg/**.[hc]pp")
     })
 
     b.recipe("ut", fun(r){
