@@ -2,6 +2,7 @@
 #define HEADER_gubg_chai_inject_hpp_ALREADY_INCLUDED
 
 #include "gubg/chai/Regex.hpp"
+#include "chaiscript/chaiscript.hpp"
 
 namespace gubg { namespace chai { 
 
