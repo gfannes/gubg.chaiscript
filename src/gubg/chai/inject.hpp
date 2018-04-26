@@ -6,8 +6,11 @@
 #include "chaiscript/chaiscript.hpp"
 #include <string>
 #include <fstream>
+#include <ctime>
 
 namespace gubg { namespace chai { 
+
+    struct Date {};
 
     namespace details { 
         template <typename ChaiEngine>
@@ -33,7 +36,17 @@ namespace gubg { namespace chai {
             eng.add(chaiscript::fun(to_upper), "to_upper");
         }
 
-
+        template <typename ChaiEngine>
+        void inject(ChaiEngine & eng, const Date *)
+        {
+            eng.add(chaiscript::fun([]()
+            {
+                std::ostringstream oss;
+                std::time_t result = std::time(nullptr);
+                oss << std::asctime(std::localtime(&result));
+                return oss.str();
+            }), "date");
+        }
 
         template <typename ChaiEngine>
         void inject(ChaiEngine & eng, const File *)
