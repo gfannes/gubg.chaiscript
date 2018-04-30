@@ -43,7 +43,10 @@ namespace gubg { namespace chai {
             {
                 std::ostringstream oss;
                 std::time_t result = std::time(nullptr);
-                oss << std::asctime(std::localtime(&result));
+                const int size = 100;
+                char buffer[size];
+                std::strftime(buffer, size, "%Y-%m-%d %H:%M:%S", std::localtime(&result));
+                oss << buffer;
                 return oss.str();
             }), "date");
         }
