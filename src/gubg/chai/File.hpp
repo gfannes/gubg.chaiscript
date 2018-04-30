@@ -69,6 +69,11 @@ bool mkdir(File f, const std::string & filename)
     return std::filesystem::create_directories(filename);
 }
 
+bool exists(File f, const std::string & filename)
+{
+    return std::filesystem::exists(filename);
+}
+
 } }
 
 #endif

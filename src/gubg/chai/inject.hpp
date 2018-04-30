@@ -84,6 +84,7 @@ namespace gubg { namespace chai {
                         return is >> v;
                     }), ">>");
             eng.add(chaiscript::fun(&mkdir), "mkdir");
+            eng.add(chaiscript::fun(&exists), "exists");
         }
     } 
 
