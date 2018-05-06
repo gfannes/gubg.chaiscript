@@ -34,6 +34,27 @@ namespace gubg { namespace chai {
               return res;
             };
             eng.add(chaiscript::fun(to_upper), "to_upper");
+
+            auto gsub = [](const std::string & str, const std::string &needle, const std::string &repl) {
+                std::string res;
+
+                for (std::string::size_type pos = 0; true; )
+                {
+                    auto needle_pos = str.find(needle, pos);
+                    if (needle_pos == std::string::npos)
+                    {
+                        res.append(str.substr(pos));
+                        break;
+                    }
+                    const auto size = needle_pos-pos;
+                    res.append(str.substr(pos, size));
+                    res.append(repl);
+                    pos += size + repl.size();
+                }
+
+                return res;
+            };
+            eng.add(chaiscript::fun(gsub), "gsub");
         }
 
         template <typename ChaiEngine>
