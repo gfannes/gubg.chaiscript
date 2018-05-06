@@ -48,7 +48,7 @@ namespace gubg { namespace chai {
                     }
                     const auto size = needle_pos-src_pos;
                     res.append(src_str.substr(src_pos, size));
-                    src_pos += size;
+                    src_pos += size + needle.size();
                     res.append(repl);
                 }
 
