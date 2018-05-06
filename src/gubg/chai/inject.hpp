@@ -35,21 +35,21 @@ namespace gubg { namespace chai {
             };
             eng.add(chaiscript::fun(to_upper), "to_upper");
 
-            auto gsub = [](const std::string & str, const std::string &needle, const std::string &repl) {
+            auto gsub = [](const std::string & src_str, const std::string &needle, const std::string &repl) {
                 std::string res;
 
-                for (std::string::size_type pos = 0; true; )
+                for (std::string::size_type src_pos = 0; true; )
                 {
-                    auto needle_pos = str.find(needle, pos);
+                    auto needle_pos = src_str.find(needle, src_pos);
                     if (needle_pos == std::string::npos)
                     {
-                        res.append(str.substr(pos));
+                        res.append(src_str.substr(src_pos));
                         break;
                     }
-                    const auto size = needle_pos-pos;
-                    res.append(str.substr(pos, size));
+                    const auto size = needle_pos-src_pos;
+                    res.append(src_str.substr(src_pos, size));
+                    src_pos += size;
                     res.append(repl);
-                    pos += size + repl.size();
                 }
 
                 return res;
