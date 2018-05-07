@@ -3,7 +3,7 @@ root.book("gubg/chaiscript", fun(b){
         r.add("src", "gubg/**.[hc]pp")
         r.depends_on("chai/func")
         r.depends_on("gubg/io/func")
-        if (my(OS) != windows(OS))
+        if (my(OS) != OS.Windows)
         {
             r.library("pthread")
             r.library("dl")
