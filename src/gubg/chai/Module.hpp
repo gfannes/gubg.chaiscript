@@ -4,4 +4,10 @@
 #include "gubg/chai/ModuleFwd.hpp"
 #include "chaiscript/chaiscript.hpp"
 
+namespace gubg { namespace chai {
+
+    inline ModulePtr make_module() { return std::make_unique<chaiscript::Module>(); }
+
+} }
+
 #endif
