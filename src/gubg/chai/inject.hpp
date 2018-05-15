@@ -7,6 +7,7 @@
 #include <string>
 #include <fstream>
 #include <ctime>
+#include <cstdlib>
 
 namespace gubg { namespace chai { 
 
@@ -55,6 +56,15 @@ namespace gubg { namespace chai {
                 return res;
             };
             eng.add(chaiscript::fun(gsub), "gsub");
+
+            auto getenv = [](const std::string & str) {
+                std::string res;
+                auto ptr = std::getenv(str.c_str());
+                if (ptr)
+                    res = ptr;
+                return res;
+            };
+            eng.add(chaiscript::fun(getenv), "getenv");
         }
 
         template <typename ChaiEngine>
