@@ -3,11 +3,6 @@ root.book("gubg/chaiscript", fun(b){
         r.add("src", "gubg/**.[hc]pp")
         r.depends_on("chai/func")
         r.depends_on("gubg/io/func")
-        if (my(OS) != OS.Windows)
-        {
-            r.library("pthread")
-            r.library("dl")
-        }
     })
 
     b.recipe("ut", fun(r){
@@ -16,5 +11,14 @@ root.book("gubg/chaiscript", fun(b){
 root.book("chai", fun(b){
     b.recipe("func", fun(r){
         r.add("extern/ChaiScript/include", "chaiscript/*.hpp")
+        if (my(OS) != OS.Windows)
+        {
+            r.library("pthread")
+            r.library("dl")
+        }
+    })
+    b.recipe("exe", TargetType.Executable, fun(r){
+        r.add("src", "chai/main.cpp")
+        r.depends_on("func")
     })
 })
