@@ -6,7 +6,8 @@ task :prepare do
     end
 end
 
-task :uth => :prepare do
+desc "Update to head: this is a manual operation now, develop is not stable enough"
+task :uth_ => :prepare do
     Dir.chdir("extern/ChaiScript") do
         sh "git checkout develop"
         sh "git pull"
