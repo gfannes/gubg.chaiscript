@@ -1,5 +1,8 @@
+require_relative("../gubg.build/bootstrap.rb")
+require("gubg/shared")
+
 task :prepare do
-    Dir.chdir("extern") do
+    Dir.chdir(GUBG.mkdir("extern")) do
         unless File.exist?("ChaiScript/readme.md")
             sh "git clone https://github.com/ChaiScript/ChaiScript"
         end
