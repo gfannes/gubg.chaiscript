@@ -1,7 +1,7 @@
 task :prepare do
     Dir.chdir("extern") do
         unless File.exist?("ChaiScript/readme.md")
-            sh "git submodule update --init ChaiScript"
+            sh "git clone https://github.com/ChaiScript/ChaiScript"
         end
     end
 end
@@ -16,3 +16,7 @@ task :uth_ => :prepare do
 end
 
 task :run
+
+task :proper do
+    rm_rf "extern"
+end
