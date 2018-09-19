@@ -5,6 +5,9 @@ task :prepare do
     Dir.chdir(GUBG.mkdir("extern")) do
         unless File.exist?("ChaiScript/readme.md")
             sh "git clone https://github.com/ChaiScript/ChaiScript"
+            Dir.chdir("ChaiScript") do
+                sh "git checkout release-6.x"
+            end
         end
     end
 end
@@ -19,6 +22,10 @@ task :uth_ => :prepare do
 end
 
 task :run
+
+task :clean
+
+task :prepare
 
 task :proper do
     rm_rf "extern"
