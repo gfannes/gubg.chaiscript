@@ -43,7 +43,7 @@ IStream & operator>>(IStream & str, std::string & value)
 inline void open_and_write(const std::string & filename, std::function<void (OStream&)> functor)
 {
     std::ofstream ofs;
-    ofs.open(filename, std::ios::binary);
+    ofs.open(filename);
 
     {
         OStream os(&ofs);
@@ -55,7 +55,7 @@ inline void open_and_write(const std::string & filename, std::function<void (OSt
 inline void open_and_read(const std::string & filename, std::function<void (IStream&)> functor)
 {
     std::ifstream ifs;
-    ifs.open(filename, std::ios::binary);
+    ifs.open(filename);
 
     {
         IStream is(&ifs);
