@@ -65,7 +65,11 @@ inline void open_and_read(const std::string & filename, std::function<void (IStr
     ifs.close();;
 }
 
-inline std::string absolute(File f, const std::string & str) { return std::filesystem::absolute(str); }
+inline std::string absolute(File f, const std::string & str)
+{
+    std::filesystem::path path(str);
+    return std::filesystem::absolute(path);
+}
 
 #define JA const std::string & 
 inline std::string join_2(File f, JA a1, JA a2) { return gubg::filesystem::combine(a1, a2); }
