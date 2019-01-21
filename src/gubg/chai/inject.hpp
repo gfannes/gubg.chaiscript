@@ -105,7 +105,25 @@ namespace gubg { namespace chai {
             };
             eng.add(chaiscript::fun(open), "open");
             eng.add(chaiscript::user_type<OStream>(), "OStream");
+            eng.add(chaiscript::fun(&OStream::operator bool), "good");
             eng.add(chaiscript::user_type<IStream>(), "IStream");
+            eng.add(chaiscript::fun(&IStream::operator bool), "good");
+
+            auto each_line = [](File f, const std::string & filename, const std::function<void (chaiscript::Boxed_Value)> & functor)
+            {
+                std::ifstream ifs;
+                ifs.open(filename);
+                if(!ifs.good())
+                    return false;
+
+                std::string line;
+                while(std::getline(ifs, line))
+                    functor(chaiscript::var(line));
+
+                ifs.close();
+                return true;
+            };
+            eng.add(chaiscript::fun(each_line), "each_line");
 
             eng.add(chaiscript::fun([](OStream & os, const std::string & v) {
                         return os << v;
@@ -116,6 +134,16 @@ namespace gubg { namespace chai {
                     }), ">>");
             eng.add(chaiscript::fun(&mkdir), "mkdir");
             eng.add(chaiscript::fun(&exists), "exists");
+            eng.add(chaiscript::fun(&join_2), "join");
+            eng.add(chaiscript::fun(&join_3), "join");
+            eng.add(chaiscript::fun(&join_4), "join");
+            eng.add(chaiscript::fun(&join_5), "join");
+            eng.add(chaiscript::fun(&join_6), "join");
+            eng.add(chaiscript::fun(&join_7), "join");
+            eng.add(chaiscript::fun(&join_8), "join");
+            eng.add(chaiscript::fun(&join_9), "join");
+            eng.add(chaiscript::fun(&join_10), "join");
+            eng.add(chaiscript::fun(&absolute), "absolute");
         }
     } 
 
