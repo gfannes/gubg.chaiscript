@@ -144,6 +144,10 @@ namespace gubg { namespace chai {
             eng.add(chaiscript::fun(&join_9), "join");
             eng.add(chaiscript::fun(&join_10), "join");
             eng.add(chaiscript::fun(&absolute), "absolute");
+            eng.add(chaiscript::fun(&basename_1), "basename");
+            eng.add(chaiscript::fun(&basename_2), "basename");
+            eng.add(chaiscript::fun(&dirname), "dirname");
+            eng.add(chaiscript::fun(&extname), "extname");
         }
     } 
 

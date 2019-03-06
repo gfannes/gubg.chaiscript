@@ -83,6 +83,30 @@ inline std::string join_9(File f, JA a1, JA a2, JA a3, JA a4, JA a5, JA a6, JA a
 inline std::string join_10(File f, JA a1, JA a2, JA a3, JA a4, JA a5, JA a6, JA a7, JA a8, JA a9, JA a10) { return gubg::filesystem::combine({a1, a2, a3, a4, a5, a6, a7, a8, a9, a10}).string(); }
 #undef JA
 
+inline std::string dirname(File f, const std::string & filename)
+{
+    return std::filesystem::path(filename).parent_path().string();
+}
+
+inline std::string extname(File f, const std::string & filename)
+{
+    return std::filesystem::path(filename).extension().string();
+}
+
+inline std::string basename_1(File f, const std::string & filename)
+{
+    return std::filesystem::path(filename).filename().string();
+}
+inline std::string basename_2(File f, const std::string & filename, const std::string & suffix)
+{
+    std::string res = basename_1(f, filename);
+    std::size_t lres = res.size(), lsuf = suffix.size();
+
+    if (lres >= lsuf && res.compare(lres - lsuf, lsuf, suffix) == 0)
+        res.erase(lres-lsuf);
+    return res;
+}
+
 inline bool mkdir(File f, const std::string & filename)
 {
     return std::filesystem::create_directories(filename);
