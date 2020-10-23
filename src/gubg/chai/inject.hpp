@@ -3,6 +3,7 @@
 
 #include "gubg/chai/Regex.hpp"
 #include "gubg/chai/File.hpp"
+#include "gubg/chai/Time.hpp"
 #include "chaiscript/chaiscript.hpp"
 #include <string>
 #include <fstream>
@@ -24,6 +25,7 @@ namespace gubg { namespace chai {
             eng.add(chaiscript::fun(&Regex::assign), "assign");
             eng.add(chaiscript::fun(&Regex::matches), "matches");
         }
+
 
         template <typename ChaiEngine>
         void inject(ChaiEngine & eng, const std::string *)
@@ -80,6 +82,14 @@ namespace gubg { namespace chai {
                 oss << buffer;
                 return oss.str();
             }), "date");
+        }
+        
+        template <typename ChaiEngine>
+        void inject(ChaiEngine & eng, const Time *)
+        {
+            eng.add_global(chaiscript::var(Time()), "Time");
+            eng.add(chaiscript::fun(&protect), "protect");
+
         }
 
         template <typename ChaiEngine>
