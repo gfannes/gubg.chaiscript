@@ -2,14 +2,10 @@ require_relative("../gubg.build/bootstrap.rb")
 require("gubg/shared")
 
 task :prepare do
-    Dir.chdir(GUBG.mkdir("extern")) do
-        unless File.exist?("ChaiScript/readme.md")
-            sh "git clone https://github.com/ChaiScript/ChaiScript"
-            Dir.chdir("ChaiScript") do
-                sh "git checkout release-6.x"
-            end
-        end
-    end
+  Rake.sh("git submodule update --init --recursive") unless File.exist?("extern/ChaiScript/readme.md")
+  Dir.chdir("extern/ChaiScript") do
+    Rake.sh("git checkout release-6.x")
+  end
 end
 
 task :uth
