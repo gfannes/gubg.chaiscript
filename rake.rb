@@ -1,6 +1,8 @@
+here = File.dirname(__FILE__)
+
 namespace :chaiscript do
 	task :prepare do
-		Dir.chdir(File.dirname(__FILE__)) do
+		Dir.chdir(here) do
 			sh "git submodule update --init --recursive"
 		end
 	end
