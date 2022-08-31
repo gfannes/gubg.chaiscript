@@ -30,7 +30,7 @@ namespace gubg { namespace chai {
     inline hash::md5::Hash make_hash(const std::filesystem::path &f)
     {
         std::string content;
-        if (file::read(content, f))
+        if (file::read(content, f) == file::ReturnCode::OK)
         {
             hash::md5::Stream s;
             s<< content;
