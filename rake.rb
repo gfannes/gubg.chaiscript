@@ -9,7 +9,7 @@ namespace :chaiscript do
 	
 	task :install do |t, args|
 		require("gubg/build/Cooker")
-		cooker = GUBG::Build::Cooker.new().option("c++.std", 17).output("bin")
+		cooker = Gubg::Build::Cooker.new().option("c++.std", 17).output("bin")
 
 		recipes = filter_recipes(args, %w[chai/exe])
 
